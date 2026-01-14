@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Чат программистов | Переходник</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>">
+  </head>
+  <body>
+    <header id="head">
+      <h1>Переходите в наш чат программистов!</h1>
+      <p style="font-size: 20px; color: rgba(255, 255, 255, 0.9); margin-top: 10px; font-weight: 300;">
+        Общайтесь, делитесь опытом и развивайтесь вместе с нами
+      </p>
+    </header>
+
+    <main class="buttons-container">
+      <a href="aboutUs.html" class="link-btn" title="Узнайте больше о нашем сообществе">
+        О НАС
+      </a>
+
+      <a href="https://t.me/coderpain" class="link-btn" target="_blank" rel="noopener noreferrer" title="Присоединяйтесь к нашему Telegram-чату">
+        ПЕРЕЙТИ В ЧАТ
+      </a>
+
+      <a href="https://www.donationalerts.com/r/Daniel445543" class="link-btn" target="_blank" rel="noopener noreferrer" title="Поддержите развитие проекта">
+        ПОДДЕРЖАТЬ ПРОЕКТ
+      </a>
+    </main>
+    <footer style="margin-top: 50px; color: rgba(255, 255, 255, 0.7); font-size: 16px; padding: 20px;">
+      <p>© 2026 Чат программистов. Все права защищены.</p>
+    </footer>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const buttons = document.querySelectorAll('.link-btn');
+
+        buttons.forEach(button => {
+          button.addEventListener('mouseenter', function() {
+            this.style.transition = 'all 0.3s ease';
+          });
+
+          button.addEventListener('click', function(e) {
+            if (this.getAttribute('href').startsWith('#')) {
+              e.preventDefault();
+              const targetId = this.getAttribute('href');
+              const targetElement = document.querySelector(targetId);
+              if (targetElement) {
+                targetElement.scrollIntoView({
+                  behavior: 'smooth',
+                  block: 'start'
+                });
+              }
+            }
+
+            this.style.animation = 'pulse 0.5s';
+            setTimeout(() => {
+              this.style.animation = '';
+            }, 500);
+          });
+        });
+
+        let originalTitle = document.title;
+        document.addEventListener('visibilitychange', function() {
+          if (document.hidden) {
+            document.title = 'Не уходи! 😢 | ' + originalTitle;
+          } else {
+            document.title = originalTitle;
+          }
+        });
+      });
+    </script>
+
+    <style>
+      @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(0.95); }
+        100% { transform: scale(1); }
+      }
+
+      .buttons-container {
+        animation: fadeInUp 0.8s ease-out;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </body>
+</html>
